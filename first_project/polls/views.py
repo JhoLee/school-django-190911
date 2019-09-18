@@ -3,5 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(req):
-    html = "<html><body> Hello !! </html></body>"
-    return HttpResponse(html)
+    latest_question_list = Question.objects.all()
+    context = {'latest_question_list': latest_question_list}
+    return render(req, 'polls/index.html', context)
